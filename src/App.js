@@ -17,7 +17,7 @@ const AppWrapper = styled.div`
 `;
 
 axios.defaults.baseURL = 'https://pixabay.com/api';
-const KEY = '24201171-f795c334c12b489d5c6645c6d';
+const KEY = '24296481-49f21b132d362d0e842f769a1';
 const URI = `/?key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`;
 
 export default class App extends Component {
