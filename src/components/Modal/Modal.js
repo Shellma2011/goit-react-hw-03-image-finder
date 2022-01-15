@@ -1,7 +1,6 @@
-// import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-// import toast, { Toaster } from 'react-hot-toast';
 import styled from 'styled-components';
 
 const Overlay = styled.div`
@@ -17,7 +16,6 @@ const Overlay = styled.div`
   z-index: 1200;
 `;
 const ModalWindow = styled.div`
-  background-color: #fff;
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
 `;
@@ -54,3 +52,7 @@ export default class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  children: PropTypes.element.isRequired,
+};

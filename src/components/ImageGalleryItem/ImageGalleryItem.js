@@ -1,5 +1,4 @@
-// // import PropTypes from 'prop-types';
-// import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ImageGalleryItems = styled.li`
@@ -13,7 +12,7 @@ const ImageGalleryItemsImage = styled.img`
   width: 100%;
   height: 260px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
@@ -23,7 +22,7 @@ const ImageGalleryItemsImage = styled.img`
 `;
 
 const ImageGalleryItem = ({ id, tags, webformatURL, onOpenModal, largeImageURL }) => (
-  <ImageGalleryItems key={id} id={id}>
+  <ImageGalleryItems key={id}>
     <ImageGalleryItemsImage
       src={webformatURL}
       alt={tags}
@@ -31,5 +30,13 @@ const ImageGalleryItem = ({ id, tags, webformatURL, onOpenModal, largeImageURL }
     />
   </ImageGalleryItems>
 );
+
+ImageGalleryItem.propTypes = {
+  id: PropTypes.number,
+  tags: PropTypes.string,
+  webformatURL: PropTypes.string.isRequired,
+  onOpenModal: PropTypes.func.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+};
 
 export default ImageGalleryItem;
