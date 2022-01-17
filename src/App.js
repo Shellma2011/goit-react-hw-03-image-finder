@@ -87,14 +87,14 @@ export default class App extends Component {
 
       const res = await axios.get(`${URI}&q=${serchTerm}&page=${page}`);
       if (res.data.hits.length < 1) {
-        this.setState({ status: 'rejected' });
+        this.setState({ page: 1, status: 'rejected' });
         // toast.error('По вашему запросу ничего не найдно, введите другой запрос');
         return;
       }
-      this.setState(prevState => {
+      this.setState(() => {
         return {
           images: res.data.hits,
-          page: prevState.page + 1,
+          page: 1,
           status: 'resolved',
         };
       });
