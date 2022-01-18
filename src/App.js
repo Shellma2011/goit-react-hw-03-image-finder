@@ -80,21 +80,21 @@ export default class App extends Component {
   async componentDidMount() {}
 
   async componentDidUpdate(_, prevState) {
-    const { serchTerm, page } = this.state;
+    const { serchTerm } = this.state;
 
     if (prevState.serchTerm !== serchTerm) {
-      this.setState({ images: [], status: 'pending' });
+      this.setState({ images: [], page: 1, status: 'pending' });
 
-      const res = await axios.get(`${URI}&q=${serchTerm}&page=${page}`);
+      const res = await axios.get(`${URI}&q=${serchTerm}&page=1`);
       if (res.data.hits.length < 1) {
-        this.setState({ page: 1, status: 'rejected' });
+        this.setState({ status: 'rejected' });
         // toast.error('По вашему запросу ничего не найдно, введите другой запрос');
         return;
       }
-      this.setState(() => {
+      this.setState(prevState => {
         return {
           images: res.data.hits,
-          page: 1,
+          page: prevState.page + 1,
           status: 'resolved',
         };
       });
